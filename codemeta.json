@@ -1,0 +1,6 @@
+{
+    "type": "SoftwareSourceCode",
+    "description": "This code generates flight simulation with turbulence and icing. The simulation is based on the physics of flight and the effects of turbulence and icing on the aircraft.",
+    "license": "https://spdx.org/licenses/BSD-2-Clause",
+    "name": "Flight simulation with turbulence and icing"
+}
