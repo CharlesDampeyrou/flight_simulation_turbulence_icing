@@ -90,11 +90,13 @@
 	%end
     CLdEr	=	CLdEr - 0.2665*x(14)/(38*pi/180);
 
-    CLIceEffect = 1 - 0.1*x(15); % Evolution of the lift due to the icing of the aircraft
+    CLoIceEffect = 1 - 0.06*x(15); % Evolution of the lift due to the icing of the aircraft
+    CLarIceEffect = 1-0.08*x(15);
+    CLo = CLo * CLoIceEffect;
+    CLar = CLar * CLarIceEffect;
 	CL	=	CLo + (CLar*alphar + CLqr*x(8) + CLdSr*u(7) + CLdEr*u(1)) ...
 			* WingMach;
                                     % Total Lift Coefficient, w/Mach Correction
-    CL = CL * CLIceEffect;
                                     
 	
 %	Drag Coefficient
@@ -115,8 +117,8 @@
 	%	epsilon	=	0.079;			% 38 deg-flap correction
 	%end
     epsilon = 0.0718 + 0.0072*x(14)/(38*pi/180);
-    CDoIceEffect = 1 + 0.5*x(15); % Effect of icing on CDo
-    epsilonIceEffect = 1 + 1*x(15); % Effect of icing on epsilon
+    CDoIceEffect = 1 + 0.4*x(15); % Effect of icing on CDo
+    epsilonIceEffect = 1 + 0.78*x(15); % Effect of icing on epsilon
     CDo = CDo * CDoIceEffect;
     epsilon = epsilon * epsilonIceEffect;
 	CD	=	CDo * PrFac + epsilon * CL^2;
