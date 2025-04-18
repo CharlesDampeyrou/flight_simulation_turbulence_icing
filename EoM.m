@@ -129,9 +129,9 @@
     end
     
     % icing and deicing speed
-    if icing~=0 && x(15)<1
+    if icing~=0 && x(15)<icing
         xd15 = 1 / 60; % The icing occures in 1min.
-    elseif icing==0 && x(15)>icing
+    elseif icing==0 && x(15)>0
         xd15 = - 1 / 60; % The deicing occurs in 1min.
     else
         xd15 = 0;

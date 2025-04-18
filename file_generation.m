@@ -16,9 +16,9 @@ clear
 disp('** 6-DOF FLIGHT Simulation **')
 
 instructionDirPath = "~/Documents/data/Safire_meghatropique/flight_instruction_files/original";
-turbulenceDirPath = "~/Documents/data/Safire_meghatropique/turbulence_files/MIL-STD-1797A/severe/40Hz";
+turbulenceDirPath = "~/Documents/data/Safire_meghatropique/turbulence_files/MIL-STD-1797A/moderate/40Hz";
 icingDataDirPath = "~/Documents/data/Safire_meghatropique/icing_condition_files";
-simulationDirPath = "~/Documents/data/Safire_meghatropique/simulations/oop_control/severe";
+simulationDirPath = "~/Documents/data/Safire_meghatropique/simulations/corrected_icing/moderate_turb_full_icing";
 
 % Retrieve flight names and simulations already performed
 instructionFiles = dir(fullfile(instructionDirPath, '*.csv'));
