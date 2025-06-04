@@ -16,9 +16,10 @@ clear
 disp('** 6-DOF FLIGHT Simulation **')
 
 instructionDirPath = "~/Documents/data/Safire_meghatropique/flight_instruction_files/original";
-turbulenceDirPath = "~/Documents/data/Safire_meghatropique/turbulence_files/MIL-STD-1797A/moderate/40Hz";
-icingDataDirPath = "~/Documents/data/Safire_meghatropique/icing_condition_files";
-simulationDirPath = "~/Documents/data/Safire_meghatropique/simulations/corrected_icing/moderate_turb_full_icing";
+turbulenceDirPath = "~/Documents/data/Safire_meghatropique/turbulence_files/MIL-STD-1797A/no_turbulence/40Hz";
+icingDataDirPath = "~/Documents/data/Safire_meghatropique/no_icing_condition_files";
+simulationDirPath = "~/Documents/data/Safire_meghatropique/simulations/no_turb_no_icing";
+% changer calmwind en tubwind
 
 % Retrieve flight names and simulations already performed
 instructionFiles = dir(fullfile(instructionDirPath, '*.csv'));
@@ -37,7 +38,7 @@ end
 % Creation of the parallel pool if needed
 runParallel = true; % if true, change the for loop to a parfor loop
 if runParallel
-    numWorkers = 8;
+    numWorkers = 7;
     pool = gcp('nocreate');
     if isempty(pool)
         parpool('local', numWorkers);
@@ -54,7 +55,7 @@ parfor i = 1:nFlights
         instructionFilePath = fullfile(instructionDirPath, instructionFileNames{i});
         [instrucCols, instructions] = lireFichierCSV(instructionFilePath);
 
-        turbulenceFileName = flightName + '_turbwind.csv';
+        turbulenceFileName = flightName + '_calmwind.csv';
         turbulenceFilePath = fullfile(turbulenceDirPath, turbulenceFileName);
         [turbCols, turbData] = lireFichierCSV(turbulenceFilePath);
         
